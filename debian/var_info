@@ -92,7 +92,8 @@ BUILD_DEPENDS="$BUILD_DEPENDS
  libavformat-dev,
  libavutil-dev,
  libpostproc-dev,
- libswscale-dev,"
+ libswscale-dev,
+ libnfs-dev,"
 fi
 
 case "$1" in
