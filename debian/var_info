@@ -74,7 +74,8 @@ BUILD_DEPENDS="debhelper (>= 7.0.50~),
  python-imaging,
  libplist-dev,
  libhal-storage-dev,
- libva-dev,"
+ libva-dev,
+ libbluray-dev,"
 
 if [ "$(lsb_release -is)" = "Debian" ]; then
 BUILD_DEPENDS="$BUILD_DEPENDS
