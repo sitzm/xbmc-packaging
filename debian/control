@@ -73,9 +73,9 @@ Build-Depends: debhelper (>= 7.0.50~),
  gdc,
  fpc,
  libomxil-bellagio-dev [armel],
- libbluray-dev,
  python-imaging,
  libva-dev,
+ libplist-dev,
  libhal-storage-dev,
  libavcodec-dev,
  libavfilter-dev,
@@ -85,6 +85,7 @@ Build-Depends: debhelper (>= 7.0.50~),
  libswscale-dev,
  libnfs-dev,
  libplist-dev,
+
 Standards-Version: 3.9.2
 Homepage: http://xbmc.org/
 Vcs-Git: git://github.com/xbmc/xbmc-packaging.git

@@ -71,11 +71,10 @@ BUILD_DEPENDS="debhelper (>= 7.0.50~),
  gdc,
  fpc,
  libomxil-bellagio-dev [armel],
- libbluray-dev,
  python-imaging,
- libva-dev,
+ libplist-dev,
  libhal-storage-dev,
- libplist-dev,"
+ libva-dev,"
 
 if [ "$(lsb_release -is)" = "Debian" ]; then
 BUILD_DEPENDS="$BUILD_DEPENDS
@@ -84,8 +83,7 @@ BUILD_DEPENDS="$BUILD_DEPENDS
  libavformat-dev (>= 4:0.7),
  libavutil-dev (>= 4:0.7),
  libpostproc-dev (>= 4:0.7),
- libswscale-dev (>= 4:0.7),
- libnfs-dev,"
+ libswscale-dev (>= 4:0.7),"
 else
 BUILD_DEPENDS="$BUILD_DEPENDS
  libavcodec-dev,
@@ -95,6 +93,17 @@ BUILD_DEPENDS="$BUILD_DEPENDS
  libpostproc-dev,
  libswscale-dev,
  libnfs-dev,"
+fi
+
+#Only Natty+ have supported+working libva-glx
+if [ "$(lsb_release -is)" = "Debian" ]; then
+BUILD_DEPENDS="$BUILD_DEPENDS
+ libva-dev,"
+#else
+#if [ "$(lsb_release -cs)" != "lucid" -a "$(lsb_release -cs)" != "maverick" ] ; then
+#BUILD_DEPENDS="$BUILD_DEPENDS
+# libva-dev,"
+#fi
 fi
 
 case "$1" in
