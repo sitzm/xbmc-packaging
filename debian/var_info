@@ -76,7 +76,7 @@ BUILD_DEPENDS="debhelper (>= 7.0.50~),
  libhal-storage-dev,
  libva-dev,
  libbluray-dev,
- libftgl-dev "
+ libftgl-dev, "
 
 if [ "$(lsb_release -is)" = "Debian" ]; then
 BUILD_DEPENDS="$BUILD_DEPENDS
