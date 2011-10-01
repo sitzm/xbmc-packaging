@@ -97,15 +97,16 @@ BUILD_DEPENDS="$BUILD_DEPENDS
 fi
 
 #Only Natty+ have supported+working libva-glx
-if [ "$(lsb_release -is)" = "Debian" ]; then
-BUILD_DEPENDS="$BUILD_DEPENDS
- libva-dev,"
-#else
-#if [ "$(lsb_release -cs)" != "lucid" -a "$(lsb_release -cs)" != "maverick" ] ; then
+#if [ "$(lsb_release -is)" = "Debian" ]; then
 #BUILD_DEPENDS="$BUILD_DEPENDS
 # libva-dev,"
+#else
+#if [ "$(lsb_release -is)" = "Ubuntu" -a "$(lsb_release -rs|tr -d .)" -ge 1104 ] ; then
+#BUILD_DEPENDS="$BUILD_DEPENDS
+# libbluray-dev,
+# libva-dev,"
 #fi
-fi
+
 
 case "$1" in
     BUILD_DEPENDS)
