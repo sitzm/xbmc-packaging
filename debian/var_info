@@ -78,8 +78,7 @@ BUILD_DEPENDS="debhelper (>= 7.0.50~),
  libbluray-dev,
  libcec-dev,
  libudev-dev,
- libafpclient-dev,
- libshairport-dev,"
+ libafpclient-dev,"
 
 if [ "$(lsb_release -is)" = "Debian" ]; then
 BUILD_DEPENDS="$BUILD_DEPENDS
@@ -111,7 +110,6 @@ fi
 # libva-dev,"
 #fi
 
-
 case "$1" in
     BUILD_DEPENDS)
         printf "$BUILD_DEPENDS"
@@ -129,12 +127,19 @@ case "$1" in
          adduser,
          sudo,
          whois,
-         uxlaunch,
          \${misc:Depends},
          \${shlibs:Depends},"
         if [ $(lsb_release -cs) = "lucid" ]; then
             XBMC_LIVE_DEPENDS="$XBMC_LIVE_DEPENDS
          mkpasswd,"
+        fi
+        if [ $(lsb_release -cs) = "natty" ]; then
+            XBMC_LIVE_DEPENDS="$XBMC_LIVE_DEPENDS
+         uxlaunch,"
+        fi
+        if [ $(lsb_release -cs) = "oneiric" ]; then
+            XBMC_LIVE_DEPENDS="$XBMC_LIVE_DEPENDS
+         lightdm,"
         fi
 
         printf "$XBMC_LIVE_DEPENDS"
