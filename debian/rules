@@ -77,6 +77,9 @@ XBMC_CONFIG_OPTIONS ?= --host=$(DEB_HOST_GNU_TYPE) \
   --enable-texturepacker \
   --enable-nfs \
   --enable-libbluray \
+  --enable-libcec \
+  --enable-afpclient \
+  --enable-airtunes \
   $(DISTRO_SPECIFIC_OPTIONS) \
   $(XBMC_CONFIG_EXTRA_OPTIONS) \
   $(ENV_OPTIONS)
@@ -139,6 +142,7 @@ override_dh_shlibdeps:
 override_dh_gencontrol:
 	dh_gencontrol
 	# Need to manually add dependencies for dlopened libs.
+<<<<<<< HEAD
         # all are packages now
 	#sed "s/^Depends:.*$$/&, $$(sh debian/var_info LIBCURL_DEPENDS)/" \
 	#	-i "debian/xbmc-bin/DEBIAN/control"
@@ -146,3 +150,13 @@ override_dh_gencontrol:
 	#	-i "debian/xbmc-bin/DEBIAN/control"
 	#sed "s/^Depends:.*$$/&, $$(sh debian/var_info LIBRTMP_DEPENDS)/" \
 	#	-i "debian/xbmc-bin/DEBIAN/control"
+=======
+	sed "s/^Depends:.*$$/&, $$(sh debian/var_info LIBCURL_DEPENDS)/" \
+		-i "debian/xbmc-bin/DEBIAN/control"
+	sed "s/^Depends:.*$$/&, $$(sh debian/var_info LIBVDPAU_DEPENDS)/" \
+		-i "debian/xbmc-bin/DEBIAN/control"
+	sed "s/^Depends:.*$$/&, $$(sh debian/var_info LIBRTMP_DEPENDS)/" \
+		-i "debian/xbmc-bin/DEBIAN/control"
+	sed "s/^Depends:.*$$/&, $$(sh debian/var_info LIBCEC_DEPENDS)/" \
+		-i "debian/xbmc-bin/DEBIAN/control"
+>>>>>>> upstream/master
