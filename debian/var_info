@@ -79,7 +79,7 @@ BUILD_DEPENDS="debhelper (>= 7.0.50~),
  libcec-dev (>= 1.1),
  libudev-dev,
  libafpclient-dev,
- libshairport-dev,"
+ libshairport-dev,
  libnfs-dev,"
 
 if [ "$(lsb_release -is)" = "Debian" ]; then
@@ -116,7 +116,6 @@ case "$1" in
     BUILD_DEPENDS)
         printf "$BUILD_DEPENDS"
         ;;
-   
     XBMC_LIVE_DEPENDS)
         XBMC_LIVE_DEPENDS="xbmc (= \${binary:Version}),
          openssh-server,
@@ -142,7 +141,6 @@ case "$1" in
 
         printf "$XBMC_LIVE_DEPENDS"
         ;;
-
 esac
 
 exit 0
