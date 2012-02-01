@@ -51,7 +51,7 @@ BUILD_DEPENDS="debhelper (>= 7.0.50~),
  python-dev,
  gawk,
  gperf,
- nasm [!amd64],
+ nasm [i386],
  yasm,
  libcwiid-dev | libcwiid1-dev,
  libbluetooth-dev,
@@ -68,8 +68,6 @@ BUILD_DEPENDS="debhelper (>= 7.0.50~),
  curl,
  libyajl-dev,
  libboost-thread-dev,
- gdc,
- fpc,
  libomxil-bellagio-dev [armel],
  python-imaging,
  libplist-dev,
@@ -80,7 +78,8 @@ BUILD_DEPENDS="debhelper (>= 7.0.50~),
  libudev-dev,
  libafpclient-dev,
  libshairport-dev,
- libnfs-dev,"
+ libnfs-dev,
+ libltdl-dev,"
 
 if [ "$(lsb_release -is)" = "Debian" ]; then
 BUILD_DEPENDS="$BUILD_DEPENDS
@@ -104,13 +103,21 @@ fi
 #Only Natty+ have supported+working libva-glx
 #if [ "$(lsb_release -is)" = "Debian" ]; then
 #BUILD_DEPENDS="$BUILD_DEPENDS
+# libbluray-dev,
 # libva-dev,"
 #else
-#if [ "$(lsb_release -is)" = "Ubuntu" -a "$(lsb_release -rs|tr -d .)" -ge 1104 ] ; then
+#if [ "$(lsb_release -is)" = "Ubuntu" -a "${XBMC_UBUNTU_PPA_VERSION}" = "natty" ] ; then
 #BUILD_DEPENDS="$BUILD_DEPENDS
 # libbluray-dev,
 # libva-dev,"
 #fi
+#if [ "$(lsb_release -is)" = "Ubuntu" -a "${XBMC_UBUNTU_PPA_VERSION}" = "oneiric" ] ; then
+#BUILD_DEPENDS="$BUILD_DEPENDS
+# libbluray-dev,
+# libva-dev,"
+#fi
+#fi
+
 
 case "$1" in
     BUILD_DEPENDS)
@@ -124,8 +131,7 @@ case "$1" in
          adduser,
          sudo,
          whois,
-         \${misc:Depends},
-         \${shlibs:Depends},"
+         \${misc:Depends},"
         if [ $(lsb_release -cs) = "lucid" ]; then
             XBMC_LIVE_DEPENDS="$XBMC_LIVE_DEPENDS
          mkpasswd,"
