@@ -80,7 +80,8 @@ BUILD_DEPENDS="debhelper (>= 7.0.50~),
  libltdl-dev,
  libtiff4-dev | libtiff-dev,
  libtinyxml-dev (>= 2.6.2),
- libmp3lame-dev,"
+ libmp3lame-dev,
+ libssh-dev,"
 BUILD_DEPENDS_PPA="$BUILD_DEPENDS"
 
 if [ "$(lsb_release -is)" = "Debian" ]; then
@@ -104,25 +105,6 @@ BUILD_DEPENDS_PPA="$BUILD_DEPENDS_PPA
 fi
 
 #Only Natty+ have supported+working libva-glx
-<<<<<<< HEAD:debian/var_info
-#if [ "$(lsb_release -is)" = "Debian" ]; then
-#BUILD_DEPENDS="$BUILD_DEPENDS
-# libbluray-dev,
-# libva-dev,"
-#else
-#if [ "$(lsb_release -is)" = "Ubuntu" -a "${XBMC_UBUNTU_PPA_VERSION}" = "natty" ] ; then
-#BUILD_DEPENDS="$BUILD_DEPENDS
-# libbluray-dev,
-# libva-dev,"
-#fi
-#if [ "$(lsb_release -is)" = "Ubuntu" -a "${XBMC_UBUNTU_PPA_VERSION}" = "oneiric" ] ; then
-#BUILD_DEPENDS="$BUILD_DEPENDS
-# libbluray-dev,
-# libva-dev,"
-#fi
-#fi
-
-=======
 if [ "$(lsb_release -is)" = "Debian" ]; then
 BUILD_DEPENDS="$BUILD_DEPENDS
  libbluray-dev,
@@ -138,8 +120,12 @@ BUILD_DEPENDS_PPA="$BUILD_DEPENDS_PPA
  libbluray-dev,
  libva-dev,"
 fi
+if [ "$(lsb_release -is)" = "Ubuntu" -a "${XBMC_UBUNTU_PPA_VERSION}" = "precise" ] ; then
+BUILD_DEPENDS_PPA="$BUILD_DEPENDS_PPA
+ libbluray-dev,
+ libva-dev,"
 fi
->>>>>>> upstream/master:var_info
+fi
 
 case "$1" in
     BUILD_DEPENDS)

@@ -137,12 +137,6 @@ debian/tmp/xbmc-bin-recommends-dummy.so:
 		-lnfs \
 		-logg \
 		-lplist \
-<<<<<<< HEAD:debian/rules
-		-lafpclient \
-		-lass \
-		-lcec
-
-=======
 		-lrtmp \
 		-lshairport \
 		-lvdpau \
@@ -150,4 +144,3 @@ debian/tmp/xbmc-bin-recommends-dummy.so:
 		-lvorbisenc \
 		-lvorbisfile \
 		$(ARCH_SPECIFIC_LIB_RECOMMENDS)
->>>>>>> upstream/master:rules.ppa
